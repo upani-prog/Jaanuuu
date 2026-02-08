@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For you 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* floating hearts */
+  .heart {
+    position: absolute;
+    color: rgba(255,255,255,0.7);
+    font-size: 18px;
+    animation: floatUp 6s linear infinite;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+  }
+
+  .card {
+    width: 340px;
+    padding: 28px;
+    border-radius: 25px;
+    text-align: center;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    animation: pop 0.8s ease;
+    z-index: 2;
+  }
+
+  @keyframes pop {
+    from { transform: scale(0.6); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  img {
+    width: 150px;
+    animation: float 2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  h2 {
+    color: #fff;
+    margin: 12px 0;
+    font-size: 24px;
+  }
+
+  p {
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 22px;
+  }
+
+  button {
+    padding: 14px 42px;
+    background: linear-gradient(135deg, #ff4d6d, #ff85a1);
+    border: none;
+    border-radius: 40px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(255,77,109,0.6);
+    transition: 0.3s;
+  }
+
+  button:hover {
+    transform: scale(1.08);
+  }
+
+  .result {
+    display: none;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- MAIN CARD -->
+<div class="card" id="card">
+  <img src="https://i.imgur.com/QqVHd1P.png">
+  <h2>💖</h2>
+  <p>
+    Happy propose Day 🌷<br>
+    ....Jaanu♥️...<br>
+    <b>mere saath puri zindagi bitana chahogi?</b> 😌
+  </p>
+  <button onclick="sayYes()">YES 💘</button>
+</div>
+
+<!-- RESULT CARD -->
+<div class="card result" id="result">
+  <img src="https://i.imgur.com/8Km9tLL.png">
+  <h2>Yayyyy...no wala button khoj rhe the?😍..nhi milega</h2>
+  <p>
+    Happy Propose Day 💕<br>
+    I love you💗 ✨
+  </p>
+</div>
+
+<script>
+  function sayYes() {
+    document.getElementById("card").style.display = "none";
+    document.getElementById("result").style.display = "block";
+  }
+
+  // create floating hearts
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (14 + Math.random()*20) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 300);
+</script>
+
+</body>
+</html>
